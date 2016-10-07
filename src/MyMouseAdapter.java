@@ -1,14 +1,20 @@
 //import java.awt.Color;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+//import java.util.Random;
+
 //import java.util.Random;
 import javax.swing.JFrame;
 
 public class MyMouseAdapter extends MouseAdapter {
 	
 	// private Random generator = new Random();
+	   public int compareX;
+	   public int compareY;
+	   private MineCoordinates Mines;
 	 
 	    public void mousePressed(MouseEvent e) {
 	        
@@ -35,6 +41,9 @@ public class MyMouseAdapter extends MouseAdapter {
 	            Panel.y = y;
 	            Panel.mouseDownGridX = Panel.getGridX(x, y);
 	            Panel.mouseDownGridY = Panel.getGridY(x, y);
+	            
+	            compareX = Panel.mouseDownGridX;
+	            compareY = Panel.mouseDownGridY;
 
 	            Panel.repaint();
 	            
@@ -77,7 +86,16 @@ public class MyMouseAdapter extends MouseAdapter {
 	            
 	            if(gridX > 0 && gridX < 8 && gridY > 0 && gridY < 8){
 	            	
+	            	Mines = new MineCoordinates(10);
+	            	Mines.PopulateMineCoordinates();
 	            	
+	            	if(Mines.CompareSelection()){
+	            		
+	            		Color newColor = Color.BLACK;
+	            		Panel.colorArray[gridX][gridY] = newColor;
+		            	Panel.repaint();
+	            		
+	            	}
 	            	
 	            }
 	              
@@ -91,5 +109,13 @@ public class MyMouseAdapter extends MouseAdapter {
 	            
 	        }
 	    }
+	    
+		public int getCompareX() {
+			return compareX;
+		}
+
+		public int getCompareY() {
+			return compareY;
+		}
 
 }

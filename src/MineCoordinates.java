@@ -1,10 +1,10 @@
 import java.util.Random;
-
-import javax.swing.JFrame;
+// import javax.swing.JFrame;
 
 public class MineCoordinates {
 	
 	private Coordinates[] MineCoordinates;
+	//private Coordinates Coordinates;
 	
 	// Creates an objects array to place the mines coordinates.
 	
@@ -12,7 +12,7 @@ public class MineCoordinates {
 		
 		MineCoordinates = new Coordinates[length];
 		
-	}
+	} 
 	
 	// Uses the Coordinates class to create coordinates with random numbers.
 	
@@ -29,12 +29,14 @@ public class MineCoordinates {
 	public void PopulateMineCoordinates() {
 		
 		for(int i=0; i < MineCoordinates.length; i++){
-			
+
 			MineCoordinates[i] = CreateCoordinates();
 			
 		}
 		
 	}
+	
+
 	
 	// Method created to compare two different coordinates.
 	
@@ -44,16 +46,38 @@ public class MineCoordinates {
 				
 	}
 	
-	// Uses the CompareCoordinates method to compare the clicked grid coordinate with all the mines coordinates.
-	
-	public void CompareSelection() { 
-		
-		for(int i=0; i < MineCoordinates.length; i++){ // STUCK ON THIS METHOD!
+	public void DifferentCoordinates(int w){
+
+		while(MineCoordinates[w] == MineCoordinates[w-1]){
 			
-		//	CompareCoordinates(x, y, MineCoordinates[i]);
+			MineCoordinates[w] = CreateCoordinates();
 			
 		}
 		
 	}
+	
+	
+	// Uses the CompareCoordinates method to compare the clicked grid coordinate with all the mines coordinates.
+	
+	MyMouseAdapter MouseAdapter;
+	
+	public boolean CompareSelection() { 
+		
+		MouseAdapter = new MyMouseAdapter();
+		
+		for(int i=0; i < MineCoordinates.length; i++){ // STUCK ON THIS METHOD!
+			
+			if(CompareCoordinates(MouseAdapter.getCompareX(), MouseAdapter.getCompareY(), MineCoordinates[i])){
+				
+				return true;
+				
+			}
+			
+		}
+		
+		return false;
+		
+	}
+	
 
 }
