@@ -4,12 +4,16 @@ public class Coordinates {
 	private int x;
 	private int y;
 	
+	// Constructor for coordinate pairs.
+	
 	public Coordinates(int a, int b){
 		
 		this.x = a;
 		this.y = b;
 		
 	}
+	
+	// Getters
 
 	public int getX() {
 		return x;
@@ -18,6 +22,8 @@ public class Coordinates {
 	public int getY() {
 		return y;
 	}
+	
+	// Setters
 
 	public void setX(int a) {
 		this.x = a;
