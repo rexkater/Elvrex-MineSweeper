@@ -40,7 +40,7 @@ public class MineCoordinates {
 		
 		for(int i=0; i < MineCoordinates.length; i++){
 
-			CompareCoordinates(, , MineCoordinates[i]);
+		//	CompareCoordinates(, , MineCoordinates[i]);
 			
 		}
 		
