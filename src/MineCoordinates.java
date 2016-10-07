@@ -44,18 +44,7 @@ public class MineCoordinates {
 		
 		return x == b.getX() && y == b.getY();
 				
-	}
-	
-	public void DifferentCoordinates(int w){
-
-		while(MineCoordinates[w] == MineCoordinates[w-1]){
-			
-			MineCoordinates[w] = CreateCoordinates();
-			
-		}
-		
-	}
-	
+	}	
 	
 	// Uses the CompareCoordinates method to compare the clicked grid coordinate with all the mines coordinates.
 	
