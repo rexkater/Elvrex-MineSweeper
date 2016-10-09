@@ -33,8 +33,6 @@ public class MineCoordinates {
 		
 		}
 		
-	
-		
 	}
 	
 
@@ -48,8 +46,6 @@ public class MineCoordinates {
 	}	
 	
 	// Uses the CompareCoordinates method to compare the clicked grid coordinate with all the mines coordinates.
-	
-	MyMouseAdapter MouseAdapter;
 	
 	public boolean CompareSelection(int x, int y) { 
 		
@@ -67,5 +63,25 @@ public class MineCoordinates {
 		
 	}
 	
+	// Checks if there's a mine nearby.
+	
+	public boolean MinesNearby(int x, int y) {
+		
+		 if(CompareSelection(x+1, y) || 
+		   CompareSelection(x-1, y) ||
+		   CompareSelection(x, y-1) ||
+		   CompareSelection(x+1, y-1) ||
+		   CompareSelection(x-1, y-1) ||
+		   CompareSelection(x, y+1) ||
+		   CompareSelection(x+1, y+1) ||
+		   CompareSelection(x-1, y+1)){
+			
+			return true;
+			
+		} 
+		
+		 else return false;
+		
+	}
 
 }
