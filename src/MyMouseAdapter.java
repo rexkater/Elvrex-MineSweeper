@@ -107,19 +107,33 @@ public class MyMouseAdapter extends MouseAdapter {
 	            
 	            if(gridX >= 0 && gridX <= 8 && gridY >= 0 && gridY <= 8){
 	            	
+	            	// Shows number of mines around the clicked grid. YELLOW ATM FOR TESTING.
+	            	
+	            	 if(Mines.MinesNearby(gridX, gridY)){
+	            		
+	            		Color newColor = Color.YELLOW;
+	            		Panel.colorArray[gridX][gridY] = newColor;
+		            	Panel.repaint();
+		            	
+		            	// Numbers should be shown here.
+	            		
+	            	} 
+	            	
 	            	// Paints grid as gray when clicked on an empty spot.
 	            	
-	            	if(!Mines.CompareSelection(gridX, gridY)){
+	            	 else if(!Mines.CompareSelection(gridX, gridY)){
 	            		
 	            		Color newColor = Color.GRAY;
 	            		Panel.colorArray[gridX][gridY] = newColor;
 		            	Panel.repaint();
+		            	
+		            	// Need to open adyacent spaces.
 	            		
 	            	}
 	            	
 	            	// Paints grid as black when clicked on a mine.
 	            	
-	            	else if(Mines.CompareSelection(gridX, gridY)){
+	            	if(Mines.CompareSelection(gridX, gridY)){
 	            		
 	            		Color newColor = Color.BLACK;
 	            		Panel.colorArray[gridX][gridY] = newColor;
@@ -158,9 +172,7 @@ public class MyMouseAdapter extends MouseAdapter {
 
 		            Panel2.repaint();
 		            
-		            // Paints grid as red to represent a flag.
-		            
-		            
+		            // Toggles red flag.          
 		            
 		            if(gridX2 >= 0 && gridX2 <= 8 && gridY2 >= 0 && gridY2 <= 8) {
 		            		
@@ -195,6 +207,8 @@ public class MyMouseAdapter extends MouseAdapter {
 	            
 	        }
 	    }
+	    
+	    // This method is created to populate the array only once on the main method.
 	    
 	    public void MinesArray(){
 	    	
