@@ -12,12 +12,12 @@ import javax.swing.JFrame;
 public class MyMouseAdapter extends MouseAdapter {
 	
 	// private Random generator = new Random();
-	   public int compareX;
-	   public int compareY;
-	   private MineCoordinates Mines;
+	   private MineCoordinates Mines = new MineCoordinates(10);
 	 
 	    public void mousePressed(MouseEvent e) {
-	        
+	   
+        	
+	    	
 	        switch (e.getButton()) {
 	        
 	        case 1:        //Left mouse button
@@ -41,9 +41,6 @@ public class MyMouseAdapter extends MouseAdapter {
 	            Panel.y = y;
 	            Panel.mouseDownGridX = Panel.getGridX(x, y);
 	            Panel.mouseDownGridY = Panel.getGridY(x, y);
-	            
-	            compareX = Panel.mouseDownGridX;
-	            compareY = Panel.mouseDownGridY;
 
 	            Panel.repaint();
 	            
@@ -71,9 +68,6 @@ public class MyMouseAdapter extends MouseAdapter {
 	            Panel2.y = y2;
 	            Panel2.mouseDownGridX = Panel2.getGridX(x2, y2);
 	            Panel2.mouseDownGridY = Panel2.getGridY(x2, y2);
-	            
-	            compareX = Panel2.mouseDownGridX;
-	            compareY = Panel2.mouseDownGridY;
 
 	            Panel2.repaint();
 	        	
@@ -113,12 +107,19 @@ public class MyMouseAdapter extends MouseAdapter {
 	            
 	            if(gridX >= 0 && gridX <= 8 && gridY >= 0 && gridY <= 8){
 	            	
-	            	Mines = new MineCoordinates(10);
-	            	Mines.PopulateMineCoordinates();
+	            	// Paints grid as gray when clicked on an empty spot.
+	            	
+	            	if(!Mines.CompareSelection(gridX, gridY)){
+	            		
+	            		Color newColor = Color.GRAY;
+	            		Panel.colorArray[gridX][gridY] = newColor;
+		            	Panel.repaint();
+	            		
+	            	}
 	            	
 	            	// Paints grid as black when clicked on a mine.
 	            	
-	            	if(Mines.CompareSelection()){
+	            	else if(Mines.CompareSelection(gridX, gridY)){
 	            		
 	            		Color newColor = Color.BLACK;
 	            		Panel.colorArray[gridX][gridY] = newColor;
@@ -154,21 +155,38 @@ public class MyMouseAdapter extends MouseAdapter {
 		            Panel2.mouseDownGridY = Panel2.getGridY(x2, y2);
 		            int gridX2 = Panel2.getGridX(x2, y2);
 		            int gridY2 = Panel2.getGridY(x2, y2);
-		            
-		            compareX = Panel2.mouseDownGridX;
-		            compareY = Panel2.mouseDownGridY;
 
 		            Panel2.repaint();
 		            
 		            // Paints grid as red to represent a flag.
 		            
+		            
+		            
 		            if(gridX2 >= 0 && gridX2 <= 8 && gridY2 >= 0 && gridY2 <= 8) {
 		            		
-		            		Color newColor = Color.RED;
-		            		Panel2.colorArray[gridX2][gridY2] = newColor;
-			            	Panel2.repaint();
+		            		if(Panel2.colorArray[gridX2][gridY2].equals(Color.WHITE)){
+		            	
+			            		Panel2.colorArray[gridX2][gridY2] = Color.RED;
+				            	Panel2.repaint();
+			            	
+		            			}
 		            		
-		            }
+		            		else if(Panel2.colorArray[gridX2][gridY2].equals(Color.BLACK)){
+			            			
+			            			// Do nothing.
+				            	
+			            			}
+		            		
+				            		else {
+							            	
+						            		Panel2.colorArray[gridX2][gridY2] = Color.WHITE;
+							            	Panel2.repaint();
+						            	
+					            			}
+			            	
+		            		}
+		            		
+		            
 	        	
 	            break;
 	            
@@ -178,12 +196,11 @@ public class MyMouseAdapter extends MouseAdapter {
 	        }
 	    }
 	    
-		public int getCompareX() {
-			return compareX;
-		}
-
-		public int getCompareY() {
-			return compareY;
-		}
+	    public void MinesArray(){
+	    	
+			Mines.PopulateMineCoordinates();
+	    	
+	    }
+	    
 
 }

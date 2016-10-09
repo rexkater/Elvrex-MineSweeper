@@ -1,10 +1,8 @@
 import java.util.Random;
-// import javax.swing.JFrame;
 
 public class MineCoordinates {
 	
 	private Coordinates[] MineCoordinates;
-	//private Coordinates Coordinates;
 	
 	// Creates an objects array to place the mines coordinates.
 	
@@ -28,11 +26,14 @@ public class MineCoordinates {
 	
 	public void PopulateMineCoordinates() {
 		
+		
 		for(int i=0; i < MineCoordinates.length; i++){
 
 			MineCoordinates[i] = CreateCoordinates();
-			
+		
 		}
+		
+	
 		
 	}
 	
@@ -50,13 +51,11 @@ public class MineCoordinates {
 	
 	MyMouseAdapter MouseAdapter;
 	
-	public boolean CompareSelection() { 
+	public boolean CompareSelection(int x, int y) { 
 		
-		MouseAdapter = new MyMouseAdapter();
-		
-		for(int i=0; i < MineCoordinates.length; i++){ // STUCK ON THIS METHOD!
+		for(int i=0; i < MineCoordinates.length; i++){ 
 			
-			if(CompareCoordinates(MouseAdapter.getCompareX(), MouseAdapter.getCompareY(), MineCoordinates[i])){
+			if(CompareCoordinates(x, y, MineCoordinates[i])){
 				
 				return true;
 				
