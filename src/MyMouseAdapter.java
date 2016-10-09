@@ -51,15 +51,15 @@ public class MyMouseAdapter extends MouseAdapter {
 	            
 	        case 3:        //Right mouse button
 	        	
-	            Component d = e.getComponent();
-	            while (!(d instanceof JFrame)) {
-	                d = d.getParent();
-	                if (d == null) {
+	            Component c2 = e.getComponent();
+	            while (!(c2 instanceof JFrame)) {
+	                c2 = c2.getParent();
+	                if (c2 == null) {
 	                    return;
 	                }
 	            }
 	        	
-	            JFrame myFrame2 = (JFrame) d;
+	            JFrame myFrame2 = (JFrame) c2;
 	            Panel Panel2 = (Panel) myFrame2.getContentPane().getComponent(0);
 	            Insets myInsets2 = myFrame2.getInsets();
 	            int x3 = myInsets2.left;
@@ -111,10 +111,12 @@ public class MyMouseAdapter extends MouseAdapter {
 	            int gridX = Panel.getGridX(x, y);
 	            int gridY = Panel.getGridY(x, y);
 	            
-	            if(gridX > 0 && gridX < 8 && gridY > 0 && gridY < 8){
+	            if(gridX >= 0 && gridX <= 8 && gridY >= 0 && gridY <= 8){
 	            	
 	            	Mines = new MineCoordinates(10);
 	            	Mines.PopulateMineCoordinates();
+	            	
+	            	// Paints grid as black when clicked on a mine.
 	            	
 	            	if(Mines.CompareSelection()){
 	            		
@@ -158,19 +160,14 @@ public class MyMouseAdapter extends MouseAdapter {
 
 		            Panel2.repaint();
 		            
-		            if(gridX2 > 0 && gridX2 < 8 && gridY2 > 0 && gridY2 < 8){
-		            	
-		            	Mines = new MineCoordinates(10);
-		            	Mines.PopulateMineCoordinates();
-		            	
-		            	if(Mines.CompareSelection()){
+		            // Paints grid as red to represent a flag.
+		            
+		            if(gridX2 >= 0 && gridX2 <= 8 && gridY2 >= 0 && gridY2 <= 8) {
 		            		
 		            		Color newColor = Color.RED;
 		            		Panel2.colorArray[gridX2][gridY2] = newColor;
 			            	Panel2.repaint();
 		            		
-		            	}
-		            	
 		            }
 	        	
 	            break;
