@@ -130,15 +130,15 @@ public class MyMouseAdapter extends MouseAdapter {
 	            
 	        case 3:        //Right mouse button
 	        	
-	        	 Component d = e.getComponent();
-		            while (!(d instanceof JFrame)) {
-		                d = d.getParent();
-		                if (d == null) {
+	        	 Component c2 = e.getComponent();
+		            while (!(c2 instanceof JFrame)) {
+		                c2 = c2.getParent();
+		                if (c2 == null) {
 		                    return;
 		                }
 		            }
 		        	
-		            JFrame myFrame2 = (JFrame) d;
+		            JFrame myFrame2 = (JFrame) c2;
 		            Panel Panel2 = (Panel) myFrame2.getContentPane().getComponent(0);
 		            Insets myInsets2 = myFrame2.getInsets();
 		            int x3 = myInsets2.left;
