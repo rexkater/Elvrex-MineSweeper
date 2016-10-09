@@ -50,6 +50,33 @@ public class MyMouseAdapter extends MouseAdapter {
 	            break;
 	            
 	        case 3:        //Right mouse button
+	        	
+	            Component d = e.getComponent();
+	            while (!(d instanceof JFrame)) {
+	                d = d.getParent();
+	                if (d == null) {
+	                    return;
+	                }
+	            }
+	        	
+	            JFrame myFrame2 = (JFrame) d;
+	            Panel Panel2 = (Panel) myFrame2.getContentPane().getComponent(0);
+	            Insets myInsets2 = myFrame2.getInsets();
+	            int x3 = myInsets2.left;
+	            int y3 = myInsets2.top;
+	            e.translatePoint(-x3, -y3);
+	            int x2 = e.getX();
+	            int y2 = e.getY();
+	            Panel2.x = x2;
+	            Panel2.y = y2;
+	            Panel2.mouseDownGridX = Panel2.getGridX(x2, y2);
+	            Panel2.mouseDownGridY = Panel2.getGridY(x2, y2);
+	            
+	            compareX = Panel2.mouseDownGridX;
+	            compareY = Panel2.mouseDownGridY;
+
+	            Panel2.repaint();
+	        	
 	            break;
 	            
 	        default:    //Some other button (2 = Middle mouse button, etc.)
@@ -102,6 +129,50 @@ public class MyMouseAdapter extends MouseAdapter {
 	            break; 
 	            
 	        case 3:        //Right mouse button
+	        	
+	        	 Component d = e.getComponent();
+		            while (!(d instanceof JFrame)) {
+		                d = d.getParent();
+		                if (d == null) {
+		                    return;
+		                }
+		            }
+		        	
+		            JFrame myFrame2 = (JFrame) d;
+		            Panel Panel2 = (Panel) myFrame2.getContentPane().getComponent(0);
+		            Insets myInsets2 = myFrame2.getInsets();
+		            int x3 = myInsets2.left;
+		            int y3 = myInsets2.top;
+		            e.translatePoint(-x3, -y3);
+		            int x2 = e.getX();
+		            int y2 = e.getY();
+		            Panel2.x = x2;
+		            Panel2.y = y2;
+		            Panel2.mouseDownGridX = Panel2.getGridX(x2, y2);
+		            Panel2.mouseDownGridY = Panel2.getGridY(x2, y2);
+		            int gridX2 = Panel2.getGridX(x2, y2);
+		            int gridY2 = Panel2.getGridY(x2, y2);
+		            
+		            compareX = Panel2.mouseDownGridX;
+		            compareY = Panel2.mouseDownGridY;
+
+		            Panel2.repaint();
+		            
+		            if(gridX2 > 0 && gridX2 < 8 && gridY2 > 0 && gridY2 < 8){
+		            	
+		            	Mines = new MineCoordinates(10);
+		            	Mines.PopulateMineCoordinates();
+		            	
+		            	if(Mines.CompareSelection()){
+		            		
+		            		Color newColor = Color.RED;
+		            		Panel2.colorArray[gridX2][gridY2] = newColor;
+			            	Panel2.repaint();
+		            		
+		            	}
+		            	
+		            }
+	        	
 	            break;
 	            
 	        default:    //Some other button (2 = Middle mouse button, etc.)
