@@ -1,4 +1,4 @@
-import java.awt.Color;
+//import java.awt.Color;
 import java.util.Random;
 
 public class MineCoordinates {
@@ -111,7 +111,7 @@ public class MineCoordinates {
 	
 	// Recursión para pintar todos los grises cerca luego de clickear uno inicialmente.
 	
-	public void PaintAdjacent(int x, int y){
+	/*public void PaintAdjacent(int x, int y){
 		
 		if(x > 9 || y > 9 || x < 0 || y < 0){return;}
 		
@@ -129,7 +129,7 @@ public class MineCoordinates {
 			
 		}
 		
-	}
+	} */
 	
 
 }

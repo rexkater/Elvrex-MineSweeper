@@ -186,7 +186,7 @@ public class MyMouseAdapter extends MouseAdapter {
 			            	
 		            			}
 		            		
-		            		else if(Panel2.colorArray[gridX2][gridY2].equals(Color.BLACK) || Panel2.colorArray[gridX2][gridY2].equals(Color.GRAY)){
+		            		else if(Panel2.colorArray[gridX2][gridY2].equals(Color.BLACK) || Panel2.colorArray[gridX2][gridY2].equals(Color.GRAY) || Panel2.colorArray[gridX2][gridY2].equals(Color.YELLOW)){
 			            			
 			            			// Do nothing.
 				            	
