@@ -7,7 +7,7 @@ public class Main {
 		JFrame myFrame = new JFrame("Elvrex Mine Sweeper");
 		myFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		myFrame.setLocation(400, 150);
-		myFrame.setSize(323, 323);
+		myFrame.setSize(325, 350);
 
 		Panel Panel = new Panel();
 		myFrame.add(Panel);

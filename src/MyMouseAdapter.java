@@ -118,6 +118,7 @@ public class MyMouseAdapter extends MouseAdapter {
 	            		Color newColor = Color.YELLOW;
 	            		Panel.colorArray[gridX][gridY] = newColor;
 	            		Panel.MinesAround[gridX][gridY] = counter;
+	            		Panel.colorArray[gridX][gridY] = newColor;
 		            	Panel.repaint();
 		            	
 		            	// Numbers should be shown here.
@@ -132,7 +133,13 @@ public class MyMouseAdapter extends MouseAdapter {
 	            		Panel.colorArray[gridX][gridY] = newColor;
 		            	Panel.repaint();
 		            	
-	            	 }
+
+	            	 
+
+		            	// Need to open adyacent spaces.
+	            		
+	            	}
+
 	            	
 	            	// Paints grid as black when clicked on a mine.
 	            	
