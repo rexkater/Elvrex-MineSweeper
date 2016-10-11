@@ -1,3 +1,4 @@
+//import java.awt.Color;
 import java.util.Random;
 
 public class MineCoordinates {
@@ -83,5 +84,51 @@ public class MineCoordinates {
 		 else return false;
 		
 	}
+	
+	// Método para contar cuántas minas hay alrededor del click.
+	
+	public int MinesNearbyCounter(int x, int y){
+		
+		int counter = 0;
+		
+		for(int i = x-1; i <= x+1; i++){
+			for(int j = y-1; j <= y+1; j++){
+				
+				// La conjunción de dos negaciones es la negación de una disjunción, fundamentos memories.
+				
+				if(!(i == x && j == y)){
+				
+					if(CompareSelection(i, j))
+						counter++;
+					
+					}
+				}
+			}
+		
+		return counter;
+		
+	}
+	
+	// Recursión para pintar todos los grises cerca luego de clickear uno inicialmente.
+	
+	/*public void PaintAdjacent(int x, int y){
+		
+		if(x > 9 || y > 9 || x < 0 || y < 0){return;}
+		
+		if(CompareSelection(x, y)){return;}
+		
+		else {
+			
+			if(a[x][y] == Color.GRAY){return;}
+			
+			a[x][y] = Color.GRAY;
+			PaintAdjacent(x+1, y);
+			PaintAdjacent(x-1, y);
+			PaintAdjacent(x, y+1);
+			PaintAdjacent(x, y-1);
+			
+		}
+		
+	} */
 
 }

@@ -17,7 +17,8 @@ public class Panel extends JPanel{
 	public int mouseDownGridX = 0;
 	public int mouseDownGridY = 0;
 	public Color[][] colorArray = new Color[TOTAL_COLUMNS][TOTAL_ROWS];
-	
+	public int MinesAround[][] = new int[TOTAL_COLUMNS][TOTAL_ROWS];
+			
 	public Panel() {   // Contructor
 		
 		// Use randoms to prevent warnings.
@@ -35,6 +36,7 @@ public class Panel extends JPanel{
 		for (int x = 0; x < TOTAL_COLUMNS; x++) {   // 9x9 Grid
 			for (int y = 0; y < TOTAL_ROWS; y++) {
 				colorArray[x][y] = Color.WHITE;
+				MinesAround[x][y] = 0;
 				}
 			}
 		
@@ -76,6 +78,19 @@ public class Panel extends JPanel{
 					}
 				}
 			}
+		
+		//Show number of mines neaby.
+		for (int x = 0; x < TOTAL_COLUMNS; x++) {
+			for (int y = 0; y < TOTAL_ROWS; y++) {
+				if ( (MinesAround[x][y] != 0) && colorArray[x][y] != Color.BLACK) {
+					int counter = MinesAround[x][y];
+					g.setColor(Color.RED);
+					g.drawString(String.valueOf(counter), x1 + GRID_X + (x * (INNER_CELL_SIZE + 1)) + 10, y1 + GRID_Y + (y * (INNER_CELL_SIZE + 1)) + 20);
+					
+					}
+				}
+			}
+		
 		}
 	
 	// GETTERS

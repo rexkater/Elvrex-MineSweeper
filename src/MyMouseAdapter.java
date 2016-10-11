@@ -11,8 +11,7 @@ import javax.swing.JFrame;
 
 public class MyMouseAdapter extends MouseAdapter {
 	
-	// private Random generator = new Random();
-	   private MineCoordinates Mines = new MineCoordinates(10);
+	    private MineCoordinates Mines = new MineCoordinates(10);
 	 
 	    public void mousePressed(MouseEvent e) {
 	   
@@ -111,7 +110,14 @@ public class MyMouseAdapter extends MouseAdapter {
 	            	
 	            	 if(Mines.MinesNearby(gridX, gridY)){
 	            		
+	            		// Count number of mines around click.
+	            		 
+	            		int counter = Mines.MinesNearbyCounter(gridX, gridY);
+	            		System.out.println("There are " + counter + " mines around.");
+	            		 
 	            		Color newColor = Color.YELLOW;
+	            		Panel.colorArray[gridX][gridY] = newColor;
+	            		Panel.MinesAround[gridX][gridY] = counter;
 	            		Panel.colorArray[gridX][gridY] = newColor;
 		            	Panel.repaint();
 		            	
@@ -127,9 +133,13 @@ public class MyMouseAdapter extends MouseAdapter {
 	            		Panel.colorArray[gridX][gridY] = newColor;
 		            	Panel.repaint();
 		            	
+
+	            	 
+
 		            	// Need to open adyacent spaces.
 	            		
 	            	}
+
 	            	
 	            	// Paints grid as black when clicked on a mine.
 	            	
@@ -183,7 +193,7 @@ public class MyMouseAdapter extends MouseAdapter {
 			            	
 		            			}
 		            		
-		            		else if(Panel2.colorArray[gridX2][gridY2].equals(Color.BLACK) || Panel2.colorArray[gridX2][gridY2].equals(Color.GRAY)){
+		            		else if(Panel2.colorArray[gridX2][gridY2].equals(Color.BLACK) || Panel2.colorArray[gridX2][gridY2].equals(Color.GRAY) || Panel2.colorArray[gridX2][gridY2].equals(Color.YELLOW)){
 			            			
 			            			// Do nothing.
 				            	
