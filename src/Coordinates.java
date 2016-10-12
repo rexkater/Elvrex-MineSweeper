@@ -13,6 +13,12 @@ public class Coordinates {
 		
 	}
 	
+	public String toString(){
+		
+		return "(" + getX() + ", " + getY() + ")";
+		
+	}
+	
 	// Getters
 
 	public int getX() {

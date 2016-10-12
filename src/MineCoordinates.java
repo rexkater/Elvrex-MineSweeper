@@ -7,6 +7,12 @@ public class MineCoordinates {
 	
 	// Creates an objects array to place the mines coordinates.
 	
+	public Coordinates[] getMineCoordinates() {
+		
+		return MineCoordinates;
+		
+	}
+
 	public MineCoordinates(int length){
 		
 		MineCoordinates = new Coordinates[length];
@@ -29,11 +35,10 @@ public class MineCoordinates {
 		
 		
 		for(int i=0; i < MineCoordinates.length; i++){
-
-			MineCoordinates[i] = CreateCoordinates();
+				
+				MineCoordinates[i] = CreateCoordinates();
 		
 		}
-		
 	}
 	
 
@@ -108,27 +113,5 @@ public class MineCoordinates {
 		return counter;
 		
 	}
-	
-	// Recursión para pintar todos los grises cerca luego de clickear uno inicialmente.
-	
-	/*public void PaintAdjacent(int x, int y){
-		
-		if(x > 9 || y > 9 || x < 0 || y < 0){return;}
-		
-		if(CompareSelection(x, y)){return;}
-		
-		else {
-			
-			if(a[x][y] == Color.GRAY){return;}
-			
-			a[x][y] = Color.GRAY;
-			PaintAdjacent(x+1, y);
-			PaintAdjacent(x-1, y);
-			PaintAdjacent(x, y+1);
-			PaintAdjacent(x, y-1);
-			
-		}
-		
-	} */
 
 }

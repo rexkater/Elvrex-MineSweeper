@@ -11,11 +11,9 @@ import javax.swing.JFrame;
 
 public class MyMouseAdapter extends MouseAdapter {
 	
-	    private MineCoordinates Mines = new MineCoordinates(10);
+	    static public MineCoordinates Mines = new MineCoordinates(10);
 	 
 	    public void mousePressed(MouseEvent e) {
-	   
-        	
 	    	
 	        switch (e.getButton()) {
 	        
@@ -113,12 +111,17 @@ public class MyMouseAdapter extends MouseAdapter {
 	            		// Count number of mines around click.
 	            		 
 	            		int counter = Mines.MinesNearbyCounter(gridX, gridY);
-	            		System.out.println("There are " + counter + " mines around.");
+	            		//System.out.println("There are " + counter + " mines around.");
+	            		
+	            		for(int i = 0; i < 10; i++){
+	            			
+	            			//System.out.println(Mines.getMineCoordinates()[i].toString());
+	            			
+	            		}
 	            		 
-	            		Color newColor = Color.YELLOW;
+	            		Color newColor = Color.GRAY;
 	            		Panel.colorArray[gridX][gridY] = newColor;
 	            		Panel.MinesAround[gridX][gridY] = counter;
-	            		Panel.colorArray[gridX][gridY] = newColor;
 		            	Panel.repaint();
 		            	
 		            	// Numbers should be shown here.
@@ -128,17 +131,10 @@ public class MyMouseAdapter extends MouseAdapter {
 	            	// Paints grid as gray when clicked on an empty spot.
 	            	
 	            	 else if(!Mines.CompareSelection(gridX, gridY)){
-	            		
-	            		Color newColor = Color.GRAY;
-	            		Panel.colorArray[gridX][gridY] = newColor;
-		            	Panel.repaint();
-		            	
-
-	            	 
-
-		            	// Need to open adyacent spaces.
-	            		
-	            	}
+		        		
+	            		 Panel.revealAdjacent(gridX, gridY);
+		        			
+	            	 }
 
 	            	
 	            	// Paints grid as black when clicked on a mine.
@@ -225,6 +221,15 @@ public class MyMouseAdapter extends MouseAdapter {
 			Mines.PopulateMineCoordinates();
 	    	
 	    }
+
+		public MineCoordinates getMines() {
+			return Mines;
+		}
+
+		public void setMines(MineCoordinates mines) {
+			Mines = mines;
+		}
+	    
 	    
 
 }
