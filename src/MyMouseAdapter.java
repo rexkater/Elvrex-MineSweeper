@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 
 //import java.util.Random;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class MyMouseAdapter extends MouseAdapter {
 	
@@ -144,8 +145,15 @@ public class MyMouseAdapter extends MouseAdapter {
 	            		Color newColor = Color.BLACK;
 	            		Panel.colorArray[gridX][gridY] = newColor;
 		            	Panel.repaint();
+		            	
+		            	JOptionPane.showMessageDialog(myFrame,
+		            		    "Sorry, but you clicked on a mine.",
+		            		    "You lost!",
+		            		    JOptionPane.ERROR_MESSAGE);
+		            	myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	            		
 	            	}
+	            	
 	            	
 	            }
 	              
