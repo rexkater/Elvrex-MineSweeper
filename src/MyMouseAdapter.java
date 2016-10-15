@@ -1,12 +1,9 @@
-//import java.awt.Color;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-//import java.util.Random;
-
-//import java.util.Random;
 import javax.swing.JFrame;
 
 public class MyMouseAdapter extends MouseAdapter {
@@ -104,20 +101,13 @@ public class MyMouseAdapter extends MouseAdapter {
 	            
 	            if(gridX >= 0 && gridX <= 8 && gridY >= 0 && gridY <= 8){
 	            	
-	            	// Shows number of mines around the clicked grid. YELLOW ATM FOR TESTING.
+	            	// Shows number of mines around the clicked grid. 
 	            	
 	            	 if(Mines.MinesNearby(gridX, gridY)){
 	            		
 	            		// Count number of mines around click.
 	            		 
 	            		int counter = Mines.MinesNearbyCounter(gridX, gridY);
-	            		//System.out.println("There are " + counter + " mines around.");
-	            		
-	            		for(int i = 0; i < 10; i++){
-	            			
-	            			//System.out.println(Mines.getMineCoordinates()[i].toString());
-	            			
-	            		}
 	            		 
 	            		Color newColor = Color.GRAY;
 	            		Panel.colorArray[gridX][gridY] = newColor;

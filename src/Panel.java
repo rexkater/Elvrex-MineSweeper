@@ -19,7 +19,6 @@ public class Panel extends JPanel{
 	
 	public Color[][] colorArray = new Color[TOTAL_COLUMNS][TOTAL_ROWS];
 	public int MinesAround[][] = new int[TOTAL_COLUMNS][TOTAL_ROWS];
-	//static public MineCoordinates Mines;
 			
 	public Panel() {   // Contructor
 		
@@ -81,7 +80,7 @@ public class Panel extends JPanel{
 				}
 			}
 		
-		//Show number of mines neaby.
+		//Show number of mines nearby.
 		for (int x = 0; x < TOTAL_COLUMNS; x++) {
 			for (int y = 0; y < TOTAL_ROWS; y++) {
 				if ( (MinesAround[x][y] != 0) && colorArray[x][y] != Color.BLACK) {
