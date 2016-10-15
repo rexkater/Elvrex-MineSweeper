@@ -2,6 +2,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Insets;
 import java.util.Random;
+
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Panel extends JPanel{
@@ -110,7 +112,30 @@ public class Panel extends JPanel{
 
 	}
 
-
+	public boolean winSituation(){
+		
+		int paintedCells = 0;
+		
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				
+				if ( (colorArray[i][j] == Color.GRAY)) {
+					paintedCells++;
+				}
+			}
+		}
+		
+		if (paintedCells >= 71){
+			
+			this.repaint();
+			JOptionPane.showMessageDialog(null, "You won!");
+			return true;
+			
+		}
+		
+		return false;
+		
+	}
 
 	public void revealAdjacent(int x, int y){
 

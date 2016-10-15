@@ -3,7 +3,6 @@ import java.awt.Component;
 import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -104,10 +103,6 @@ public class MyMouseAdapter extends MouseAdapter {
 
 			if(gridX >= 0 && gridX <= 8 && gridY >= 0 && gridY <= 8){
 
-					//ImageIcon point = new ImageIcon("Bienve.jpg");
-					//JOptionPane.showMessageDialog(null, "YESSS, you never touched a mine!","YOU WIN!", JOptionPane.INFORMATION_MESSAGE,point);
-					//System.exit(0);
-
 				// Paints grid as gray when clicked on an empty spot or nearby a mine with the respective number.
 
 				if(!Mines.CompareSelection(gridX, gridY)){
@@ -115,7 +110,13 @@ public class MyMouseAdapter extends MouseAdapter {
 					Panel.revealAdjacent(gridX, gridY);
 
 				}
-
+				
+				if(Panel.winSituation()){
+					
+					Panel.repaint();
+					myFrame.dispose();
+					
+				}
 
 				// Paints grid as black when clicked on a mine.
 
@@ -126,8 +127,7 @@ public class MyMouseAdapter extends MouseAdapter {
 					Panel.colorArray[gridX][gridY] = newColor;
 					Panel.repaint();
 					
-					ImageIcon point = new ImageIcon("Bienve.jpg");
-					JOptionPane.showMessageDialog(null, "Oops, you touched a mine!","GAME OVER!", JOptionPane.INFORMATION_MESSAGE,point);
+					JOptionPane.showMessageDialog(null, "You lose!");
 					System.exit(0);
 
 				}
