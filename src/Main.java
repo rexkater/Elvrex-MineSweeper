@@ -11,6 +11,8 @@ public class Main {
 
 		Panel Panel = new Panel();
 		myFrame.add(Panel);
+		
+		// Fills the Mines array with 10 objects from the Coordinates class.
 
 		MyMouseAdapter myMouseAdapter = new MyMouseAdapter();
 		myFrame.addMouseListener(myMouseAdapter);
