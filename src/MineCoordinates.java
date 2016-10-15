@@ -13,7 +13,7 @@ public class MineCoordinates {
 		MineCoordinates = new Coordinates[length];
 		
 	}
-	
+	//
 	// Uses the Coordinates class to create coordinates with random numbers.
 	
 	private Coordinates CreateCoordinates() {

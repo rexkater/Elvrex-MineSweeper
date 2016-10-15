@@ -13,7 +13,7 @@ public class MyMouseAdapter extends MouseAdapter {
 	    public void mousePressed(MouseEvent e) {
 	        
 	        switch (e.getButton()) {
-	        
+	        //
 	        case 1:        //Left mouse button
 	            Component c = e.getComponent();
 	            while (!(c instanceof JFrame)) {

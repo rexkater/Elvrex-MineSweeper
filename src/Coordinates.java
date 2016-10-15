@@ -5,7 +5,7 @@ public class Coordinates {
 	private int y;
 	
 	// Constructor for coordinate pairs.
-	
+	//
 	public Coordinates(int a, int b){
 		
 		this.x = a;
